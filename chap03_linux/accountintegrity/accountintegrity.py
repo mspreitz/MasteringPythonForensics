@@ -100,7 +100,7 @@ def detect_deviating_hashing(shadow):
     if len(algorithms) > 1:
         print 'Multiple hashing algorithms found: %s' % ', '.join(algorithms)
 
-    if len(noalgo) > 1:
+    if len(noalgo) > 0:
         print 'Users without hash algorithm spec. found: %s' % \
               ', '.join(noalgo)
 
