@@ -60,8 +60,8 @@ def calc_mtime_clusters(stats, days=1, mincluster=5):
     Tuple with array denoting cluster membership
     and indexes of representatives of cluster cores"""
 
-    atimes = map(lambda x: [x.st_mtime], stats)
-    return _calc_clusters(atimes, days * 24 * 3600, mincluster)
+    mtimes = map(lambda x: [x.st_mtime], stats)
+    return _calc_clusters(mtimes, days * 24 * 3600, mincluster)
 
 
 def calc_histogram(labels, core_indexes, timestamps):
