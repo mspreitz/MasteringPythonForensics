@@ -30,7 +30,7 @@ def gen_filestats(basepath):
             filestats.append(os.lstat(fullname))
     return (filenames, filestats)
 
-def show_date_histogram(times, heading=''):
+def show_date_histogram(times, heading='', block=False):
     """Draws and displays a histogram over the given timestamps.
 
     Arguments:
@@ -52,7 +52,8 @@ def show_date_histogram(times, heading=''):
     fig.autofmt_xdate()
 
     fig.show()
-    plt.show()
+    if block:
+        plt.show()
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
@@ -68,6 +69,6 @@ if __name__ == '__main__':
     atimes = map(lambda x: x.st_atime, stats)
 
     show_date_histogram(mtimes, 'mtimes of ' + path)
-    show_date_histogram(atimes, 'atimes of ' + path)
+    show_date_histogram(atimes, 'atimes of ' + path, True)
 
     
