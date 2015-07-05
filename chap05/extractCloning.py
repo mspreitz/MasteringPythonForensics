@@ -11,6 +11,9 @@ import sys
 session2user_ip = {}
 
 def _logopen(filename):
+    """Helper to provide transparent decompressing of compressed logs,
+       if indicated by the file name.
+    """
     if re.match(r'.*\.gz', filename):
         return gzip.open(filename, 'r')
 
@@ -35,6 +38,9 @@ def collect_session_data(vpxlogdir):
         f.close()
 
 def print_cloning_hints(basedir):
+    """Print timestamp, user, and IP address for VM cloning without
+       by reconstructing from vpxd logs instead of accessing 
+       the 'official' event logs"""
     vpxlogdir = join(basedir, 'ProgramData', 
                               'vCenterServer', 
                               'logs',
